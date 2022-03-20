@@ -15,22 +15,27 @@ form.onsubmit = function(e){
         var div = document.createElement('div')
         var h3 = document.createElement('h3')
         h3.textContent = data.name + ", " + data.sys.country
+        h3.classList.add("city-heading")
         div.appendChild(h3)
 
         var img = document.createElement('img')
         img.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+        img.classList.add("icon")
         div.appendChild(img)
 
         var p = document.createElement('p')
         p.textContent = data.weather[0].description
+        p.classList.add("weather-description")
         div.appendChild(p)
 
         var p2 = document.createElement('p')
         p2.textContent = "Current: "+ data.main.temp + "\u00B0 F"
+        p2.classList.add("current-temp")
         div.appendChild(p2)
 
         var p3 = document.createElement('p')
         p3.textContent = "Feels Like: "+ data.main.feels_like+ "\u00B0 F"
+        p3.classList.add("feels-like")
         div.appendChild(p3)
 
         weatherWidget.appendChild(div)
@@ -38,10 +43,11 @@ form.onsubmit = function(e){
     
     .catch(function(err){
 
-        var p4 = document.createElement('h2')
-        p4.textContent = "Location Not Found"
+        var error = document.createElement('h2')
+        error.textContent = "Location Not Found"
+        error.classList.add("error")
 
-        document.getElementById("weather-widget").appendChild(p4);
+        document.getElementById("weather-widget").appendChild(error);
 
     })
 }
