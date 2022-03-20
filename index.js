@@ -17,6 +17,10 @@ form.onsubmit = function(e){
         h3.textContent = data.name + ", " + data.sys.country
         div.appendChild(h3)
 
+        var img = document.createElement('img')
+        img.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+        div.appendChild(img)
+
         var p = document.createElement('p')
         p.textContent = data.weather[0].description
         div.appendChild(p)
@@ -31,8 +35,14 @@ form.onsubmit = function(e){
 
         weatherWidget.appendChild(div)
     })
+    
     .catch(function(err){
-        console.log(err)
+
+        var p4 = document.createElement('h2')
+        p4.textContent = "Location Not Found"
+
+        document.getElementById("weather-widget").appendChild(p4);
+
     })
 }
 
