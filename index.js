@@ -12,7 +12,7 @@ form.onsubmit = function(e){
     .then(function(data){
         console.log(data)
 
-        var div = document.createElement('div')
+        var div = document.createElement('div');
         var h3 = document.createElement('h3')
         h3.textContent = data.name + ", " + data.sys.country
         h3.classList.add("city-heading")
@@ -38,7 +38,10 @@ form.onsubmit = function(e){
         p3.classList.add("feels-like")
         div.appendChild(p3)
 
+        weatherWidget.innerHTML = ""
+
         weatherWidget.appendChild(div)
+    
     })
     
     .catch(function(err){
